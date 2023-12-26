@@ -32,7 +32,7 @@
 [ \t]   {
     ;
 }
-.+   {
+.   {
     fprintf(yyout, "(%s string invalida) ", yytext);
 }
 
