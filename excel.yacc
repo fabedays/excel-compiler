@@ -12,6 +12,7 @@
     char* s;
 }
 %token <i> INT
+%token <s> STRING
 %left '+' '-' '*' '/' '%' ',' '\n'
 %type <i> program statement expr
 %%
@@ -22,7 +23,8 @@ program:
     | {}
     ;
 statement:
-    expr{printf("%d\n", $1);}
+    expr{fprintf(yyout, "%d", $1);}
+    |STRING {fprintf(yyout, "%s", $1);}
     ;
 expr:
     INT {$$ = $1;}
