@@ -9,23 +9,31 @@
 %%
 
 [0-9]+   {
-    fprintf(yyout, "numero %s", yytext);
+    yylval.i = atoi(yytext);
     return INT;
 }
-\"[A-Za-z]+\" {
-    fprintf(yyout, "string %s", yytext);
+[-+*/]  {
+    return *yytext;
+}
+\"[a-zA-Z]+\"    {
+    yylval.s = yytext;
+    printf("stuff");
+    return STRING;
 }
 
 , {
-    fprintf(yyout, "%s", yytext);
+    yylval.s = yytext;
+    return STRING;
 }
-
-.   {
-    fprintf(yyout, "%s", yytext);
+\r\n  {
+    yylval.s = yytext;
+    return STRING;
 }
-
-\n  {
-    fprintf(yyout, "%s", yytext);
+[ \t]   {
+    ;
+}
+.+   {
+    fprintf(yyout, "(%s string invalida) ", yytext);
 }
 
 %%
