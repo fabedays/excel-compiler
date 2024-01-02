@@ -14,7 +14,7 @@ cell [A-Z]+[0-9]+
 cells ({cell}|{cell}:{cell})(;({cell}|{cell}:{cell}))*
 %%
 
-[0-9]+   {
+[-]?[0-9]+   {
     yylval.i = atoi(yytext);
     return INT;
 }
@@ -32,7 +32,9 @@ cells ({cell}|{cell}:{cell})(;({cell}|{cell}:{cell}))*
     char celas[length];
     strncpy(celas, texto, length);
     celas[strlen(celas)-1] = '\0';
-    yylval.s = celas;
+    yylval.s = malloc(length);
+    memcpy(yylval.s, celas, strlen(yytext));
+    yylval.s[strlen(yylval.s)] = '\0';
     return SOMA;
     }
     else{
