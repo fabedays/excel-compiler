@@ -1,5 +1,5 @@
 CC = gcc
-CFLAGS =
+CFLAGS = -w
 NOME = excel
 
 parser: y.tab.c lex.yy.c

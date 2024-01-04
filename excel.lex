@@ -54,7 +54,7 @@ cells ({cell}|{cell}:{cell})(;({cell}|{cell}:{cell}))*
     ;
 }
 .   {
-    //printf("i");
+    printf("i");
     yylval.s = yytext;
     return STRING;
 }

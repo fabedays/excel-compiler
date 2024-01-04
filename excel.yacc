@@ -145,10 +145,11 @@ int main(int argc, char *argv[]) {
     fclose(yyin);
     fclose(yyout);
     //remove("middle.csv");
-    /* printf("\n");
+    printf("\n");
     for(int i = 0; i< MAX_ROWS; i++){
         for(int j = 0; j<MAX_COLS; j++)
             printf("%d\t", csv_data[i][j]);
         printf("\n");
-    } */
+    }
+    printf("\n");
 }  
